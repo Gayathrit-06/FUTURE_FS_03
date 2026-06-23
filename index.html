@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sri Murugan Mess – Authentic South Indian Food, Chennai</title>
+  <meta name="description" content="Sri Murugan Mess serves authentic South Indian vegetarian food in T. Nagar, Chennai. Order online or book a table. Fresh since 1988."/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     NAV
+═══════════════════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#hero">Sri <span>Murugan</span> Mess</a>
+
+  <ul class="nav-links">
+    <li><a href="#specialties">Specialties</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#booking">Book Table</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="btn-nav-login" onclick="openAuth('login')">Login</button>
+    <button class="btn-nav-order" onclick="openAuth('login', true)">Order Now</button>
+
+    <!-- Shown after login -->
+    <div class="nav-user-pill" id="nav-user-pill" style="display:none;">
+      <div class="avatar" id="nav-avatar">?</div>
+      <span class="uname" id="nav-username">User</span>
+
+      <!-- Dropdown -->
+      <div class="user-dropdown">
+        <div class="dd-header">
+          <div class="dd-name"  id="dd-name">User</div>
+          <div class="dd-email" id="dd-email">user@email.com</div>
+          <div class="dd-wallet">
+            💰 Wallet: <span id="dd-wallet-balance">₹0</span>
+            <button class="dd-wallet-add" onclick="openWalletModal()">+ Add Money</button>
+          </div>
+        </div>
+        <div class="dd-item" onclick="openOrdersModal()">
+          🛒 My Orders
+        </div>
+        <div class="dd-item" onclick="openBookingsModal()">
+          📋 My Bookings
+        </div>
+        <div class="dd-item danger" onclick="handleLogout()">
+          🚪 Logout
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="nav-mobile-btn" onclick="toggleMobileMenu()" aria-label="Open menu">☰</button>
+</nav>
+
+<div class="nav-mobile-menu">
+  <a href="#specialties" onclick="closeMobileMenu()">Specialties</a>
+  <a href="#menu"        onclick="closeMobileMenu()">Menu &amp; Order</a>
+  <a href="#booking"     onclick="closeMobileMenu()">Book a Table</a>
+  <a href="#about"       onclick="closeMobileMenu()">Our Story</a>
+  <a href="#location"    onclick="closeMobileMenu()">Location</a>
+  <a onclick="openAuth('login');closeMobileMenu();" style="color:var(--saffron);font-weight:600;">Login / Sign Up</a>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🌿 Chennai's Favourite Since 1988</div>
+    <h1>Food That Feels Like<br/><em>Amma's Kitchen</em></h1>
+    <p class="hero-sub">
+      Authentic South Indian vegetarian meals, breakfast, and tiffin — made with
+      traditional recipes, fresh produce sourced daily from Koyambedu market, and
+      warmth that keeps Chennai families coming back for 35 years.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary"   onclick="openAuth('login', true)">Order Online</button>
+      <a      class="btn-secondary" href="#booking">Book a Table</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">35+</span><span class="stat-label">Years Serving</span></div>
+      <div class="stat"><span class="stat-num">1200+</span><span class="stat-label">Meals Daily</span></div>
+      <div class="stat"><span class="stat-num">4.8★</span><span class="stat-label">Google Rating</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Vegetarian</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     SPECIALTIES
+═══════════════════════════════════ -->
+<section id="specialties">
+  <div class="section-tag">What We're Known For</div>
+  <h2>Our Signature Specialties</h2>
+  <p class="section-lead">
+    Every dish is made fresh each morning — no shortcuts, no compromises.
+    Our recipes have been in the family for three generations.
+  </p>
+  <div class="specialties-grid">
+    <div class="specialty-card">
+      <div class="specialty-icon">🥞</div>
+      <h3>Set Dosa &amp; Idli</h3>
+      <p>Stone-ground batter fermented overnight. Served with three chutneys and sambar.</p>
+      <span class="specialty-badge">Morning Special</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🍛</div>
+      <h3>Full Meals (Saapadu)</h3>
+      <p>Complete South Indian thali — rice, rasam, sambar, kootu, poriyal, appalam. Unlimited.</p>
+      <span class="specialty-badge">Lunch &amp; Dinner</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🧇</div>
+      <h3>Parotta &amp; Kurma</h3>
+      <p>Layered coin parottas made to order, served with aromatic vegetable kurma.</p>
+      <span class="specialty-badge">Evening Favourite</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🍵</div>
+      <h3>Filter Coffee</h3>
+      <p>Authentic Tamil filter kaapi — decoction brewed fresh every two hours.</p>
+      <span class="specialty-badge">All Day</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🫕</div>
+      <h3>Pongal &amp; Gothsu</h3>
+      <p>Venpongal with freshly-cracked pepper and ghee, paired with tangy gothsu.</p>
+      <span class="specialty-badge">Morning Special</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🌶️</div>
+      <h3>Chettinad Specials</h3>
+      <p>Authentic Chettinad kuzhambu and gravies — fiery, fragrant, unforgettable.</p>
+      <span class="specialty-badge">Fri &amp; Sat</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🫔</div>
+      <h3>Kothu Parotta</h3>
+      <p>Shredded parotta tossed with masala on a hot iron tawa — Chennai's street-food star.</p>
+      <span class="specialty-badge">Evening Only</span>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🍮</div>
+      <h3>Traditional Sweets</h3>
+      <p>Homemade payasam, kesari, Mysore pak, and halwa. Fresh weekends, no additives.</p>
+      <span class="specialty-badge">Weekend</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     MENU + CART
+═══════════════════════════════════ -->
+<section id="menu">
+  <div class="section-tag">Order Online</div>
+  <h2>Our Menu</h2>
+  <p class="section-lead">
+    100% vegetarian, freshly prepared. Add items to your cart and place an order
+    — we'll confirm by SMS within minutes.
+  </p>
+
+  <div class="menu-layout">
+    <!-- Menu panels -->
+    <div>
+      <div class="menu-tabs">
+        <button class="tab-btn active"  onclick="switchTab('breakfast',  this)">Breakfast</button>
+        <button class="tab-btn"         onclick="switchTab('meals',      this)">Meals</button>
+        <button class="tab-btn"         onclick="switchTab('tiffin',     this)">Evening Tiffin</button>
+        <button class="tab-btn"         onclick="switchTab('chettinad',  this)">Chettinad</button>
+        <button class="tab-btn"         onclick="switchTab('sweets',     this)">Sweets</button>
+        <button class="tab-btn"         onclick="switchTab('drinks',     this)">Drinks</button>
+      </div>
+
+      <div class="menu-section active" id="tab-breakfast"></div>
+      <div class="menu-section"        id="tab-meals"></div>
+      <div class="menu-section"        id="tab-tiffin"></div>
+      <div class="menu-section"        id="tab-chettinad"></div>
+      <div class="menu-section"        id="tab-sweets"></div>
+      <div class="menu-section"        id="tab-drinks"></div>
+    </div>
+
+    <!-- Cart sidebar -->
+    <div class="cart-box">
+      <h3>Your Order <span class="cart-badge" id="cart-count">0</span></h3>
+
+      <div id="cart-empty" class="cart-empty">
+        <div class="empty-icon">🛒</div>
+        <p>Your cart is empty.<br/>Add items from the menu.</p>
+      </div>
+
+      <div id="cart-items-list" class="cart-items" style="display:none;"></div>
+
+      <div id="cart-summary" style="display:none;">
+        <hr class="cart-divider"/>
+        <div class="cart-total-row"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+        <div class="cart-total-row" style="font-size:.825rem;font-weight:400;color:var(--text-tertiary);">
+          <span>Delivery fee</span><span id="cart-delivery">₹40</span>
+        </div>
+        <hr class="cart-divider"/>
+        <div class="cart-total-row" style="color:var(--saffron);font-size:1rem;">
+          <span>Total</span><span id="cart-total">₹40</span>
+        </div>
+        <button class="btn-checkout" onclick="handleCheckout()">Proceed to Checkout →</button>
+        <p class="cart-note">🔒 Secure checkout. Confirm via SMS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     TABLE BOOKING
+═══════════════════════════════════ -->
+<section id="booking">
+  <div class="section-tag">Reserve a Table</div>
+  <h2>Book Your Table</h2>
+  <p class="section-lead">Reserve your seat in advance — we'll confirm your booking within 30 minutes.</p>
+
+  <div class="booking-grid">
+    <!-- Form -->
+    <div class="booking-form">
+      <h3>📋 Reservation Details</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="book-name" placeholder="e.g. Ramesh Kumar"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel"  id="book-phone" placeholder="+91 98765 43210"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="book-date"/>
+        </div>
+        <div class="form-group">
+          <label>Time Slot</label>
+          <select id="book-time">
+            <option value="">Select time</option>
+            <option>6:00 AM – 7:00 AM (Breakfast)</option>
+            <option>7:00 AM – 8:00 AM (Breakfast)</option>
+            <option>8:00 AM – 9:00 AM (Breakfast)</option>
+            <option>11:30 AM – 12:30 PM (Lunch)</option>
+            <option>12:30 PM – 1:30 PM (Lunch)</option>
+            <option>1:30 PM – 2:30 PM (Lunch)</option>
+            <option>6:30 PM – 7:30 PM (Dinner)</option>
+            <option>7:30 PM – 8:30 PM (Dinner)</option>
+            <option>8:30 PM – 9:30 PM (Dinner)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <select id="book-guests">
+            <option>1 Guest</option><option>2 Guests</option>
+            <option>3 Guests</option><option>4 Guests</option>
+            <option>5 Guests</option><option>6+ Guests</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Seating Preference</label>
+          <select id="book-seat">
+            <option>No preference</option>
+            <option>Indoor (AC)</option>
+            <option>Indoor (Non-AC)</option>
+            <option>Near window</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Requests (optional)</label>
+        <textarea id="book-note" placeholder="Dietary needs, celebrations, accessibility requirements…"></textarea>
+      </div>
+      <button class="btn-book" onclick="handleBooking()">Confirm Reservation</button>
+      <p style="font-size:.75rem;color:var(--text-tertiary);margin-top:.5rem;">
+        ₹50 reservation fee will be deducted from your wallet on confirmation.
+      </p>
+      <div class="booking-success" id="booking-success"></div>
+    </div>
+
+    <!-- Info panel -->
+    <div class="booking-info">
+      <div class="info-highlight">
+        <h4>📌 Important Note</h4>
+        <p>Table booking is confirmed only after a call from our team. For parties of 6 or more, please call us directly at <strong>+91 44 2345 6789</strong>.</p>
+      </div>
+      <div class="feature-list">
+        <div class="feature-row">
+          <div class="feature-icon">🍽️</div>
+          <div class="feature-text"><h4>Priority Full Meals</h4><p>Booked tables get guaranteed full meals service and priority seating.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon">🎂</div>
+          <div class="feature-text"><h4>Celebrations Welcome</h4><p>Birthdays, anniversaries, family gatherings — we'll make it special.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon">♿</div>
+          <div class="feature-text"><h4>Accessible Seating</h4><p>Wheelchair-accessible tables available, please mention in requests.</p></div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon">🚗</div>
+          <div class="feature-text"><h4>Free Parking</h4><p>Dedicated parking for 30 vehicles on-site, behind the restaurant.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     ABOUT
+═══════════════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="big-icon"><img src="restaurantimage.jpg" /> </div>
+      <p>Serving Chennai families since 1988</p>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">Our Story</div>
+      <h2>35 Years of<br/>Feeding Chennai</h2>
+      <p>Sri Murugan Mess was started in 1988 by Krishnaswamy and his wife Meenakshi on Usman Road, T. Nagar. What began as a modest 8-table shop feeding workers has grown into one of Chennai's most beloved family restaurants.</p>
+      <p>We source vegetables daily from Koyambedu market. Our sambar recipe has not changed in 35 years. Every batter is stone-ground in-house. No MSG, no artificial flavours, no food colour — only the real spices your grandparents loved.</p>
+      <p>Today, Krishnaswamy's son Karthik runs the kitchen, carrying forward every recipe exactly as it was taught to him.</p>
+      <div class="about-values">
+        <div class="value-row"><div class="value-dot"></div><span class="value-text">100% vegetarian kitchen — no meat, fish, or eggs, ever</span></div>
+        <div class="value-row"><div class="value-dot"></div><span class="value-text">Fresh batter ground daily — no ready-made mixes</span></div>
+        <div class="value-row"><div class="value-dot"></div><span class="value-text">Filtered water used in all cooking and beverages</span></div>
+        <div class="value-row"><div class="value-dot"></div><span class="value-text">FSSAI certified &amp; hygiene audited every 6 months</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════ -->
+<section id="testimonials">
+  <div class="section-tag">What Customers Say</div>
+  <h2>Loved by Chennai Families</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Been eating here since I was a child in T. Nagar. Now I bring my own children every Sunday. The set dosa and filter kaapi combo is unmatched in Chennai."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SK</div>
+        <div><div class="reviewer-name">Suresh Kumar</div><div class="reviewer-since">Customer since 1995</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Ordered online for a family of 6. Delivery was punctual, food piping hot, packing excellent. The Chettinad kuzhambu on Friday is something else entirely."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">VP</div>
+        <div><div class="reviewer-name">Vijaya Priya</div><div class="reviewer-since">Customer since 2010</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Moved to Chennai for work and Sri Murugan Mess made it feel like home. Full meals at ₹90 is the best value in the city. The new table booking is seamless."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">RN</div>
+        <div><div class="reviewer-name">Rajan Nair</div><div class="reviewer-since">Customer since 2020</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Booked for my parents' anniversary. The team arranged a small surprise without even being asked. That personal touch is rare in Chennai restaurants today."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">MA</div>
+        <div><div class="reviewer-name">Muthu Arasan</div><div class="reviewer-since">Customer since 2018</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     LOCATION + GOOGLE MAP
+═══════════════════════════════════ -->
+<section id="location">
+  <div class="section-tag">Find Us</div>
+  <h2>Location &amp; Hours</h2>
+  <div class="location-grid">
+
+    <!-- Google Map — T. Nagar, Chennai -->
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps?q=Sri+Murugan+Mess,+42+Usman+Road,+T.+Nagar,+Chennai,+Tamil+Nadu+600017&output=embed"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Sri Murugan Mess location — Usman Road, T. Nagar, Chennai">
+      </iframe>
+    </div>
+
+    <div class="location-details">
+      <!-- Hours -->
+      <div class="loc-card">
+        <h3>🕐 Opening Hours</h3>
+        <div class="timing-row"><span class="timing-day">Monday – Friday</span><span class="timing-open">6:00 AM – 10:30 PM</span></div>
+        <div class="timing-row"><span class="timing-day">Saturday</span>        <span class="timing-open">5:30 AM – 11:00 PM</span></div>
+        <div class="timing-row"><span class="timing-day">Sunday</span>          <span class="timing-open">6:00 AM – 10:00 PM</span></div>
+        <div class="timing-row"><span class="timing-day">Public Holidays</span><span class="timing-open">7:00 AM – 9:00 PM</span></div>
+        <div style="margin-top:1rem;padding:.875rem;background:var(--saffron-dim);border:1px solid var(--saffron-border);border-radius:var(--r-sm);">
+          <p style="font-size:.8rem;color:var(--saffron);">🍽️ Full meals: 11 AM–3 PM &amp; 6 PM–10 PM. Last order 30 min before closing.</p>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="loc-card">
+        <h3>📍 Address &amp; Contact</h3>
+        <p style="font-size:.9rem;color:var(--text-secondary);margin-bottom:.875rem;line-height:1.75;">
+          <strong style="color:var(--text-primary);">42, Usman Road, T. Nagar</strong><br/>
+          Chennai – 600 017, Tamil Nadu<br/>
+          <em style="font-size:.8rem;color:var(--text-tertiary);">Near Panagal Park, opp. Saravana Stores</em>
+        </p>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail">Phone: <a href="tel:+914423456789">+91 44 2345 6789</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail"><a href="mailto:info@srimuruganmess.in">info@srimuruganmess.in</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🚇</div>
+          <div class="contact-detail">Metro: T. Nagar Station — 200 m walk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CTA BANNER
+═══════════════════════════════════ -->
+<div id="cta-banner">
+  <h2>Hungry? We're Open Right Now.</h2>
+  <p>Order online, reserve a table, or walk right in — we're always ready for you.</p>
+  <div class="cta-btns">
+    <button class="btn-primary"   onclick="openAuth('login', true)">Order Online</button>
+    <a      class="btn-secondary" href="#booking">Book a Table</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="footer-logo" href="#hero">Sri Murugan Mess</a>
+      <p>Authentic South Indian vegetarian food in T. Nagar, Chennai since 1988. Fresh. Traditional. Wholesome.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#specialties">Specialties</a></li>
+        <li><a href="#menu">Menu &amp; Order</a></li>
+        <li><a href="#booking">Book Table</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+914423456789">+91 44 2345 6789</a></li>
+        <li><a href="mailto:info@srimuruganmess.in">Email Us</a></li>
+        <li><a href="#location">Get Directions</a></li>
+        <li><a href="#booking">Reserve a Table</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Sri Murugan Mess, Chennai. All rights reserved.</span>
+    <span>FSSAI Lic: 22421560000988</span>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════
+     AUTH MODAL (Login / Sign Up)
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('auth-modal')">✕</button>
+    <h2>Welcome 🙏</h2>
+    <p class="modal-sub">Login or create a free account to order food and book tables.</p>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="modal-tab-login"  onclick="switchAuthTab('login')">Login</button>
+      <button class="modal-tab"        id="modal-tab-signup" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="modal-form active" id="form-login">
+      <div class="mf-group">
+        <label>Email or Phone</label>
+        <input type="text" id="login-email" placeholder="your@email.com or 98765 43210"/>
+      </div>
+      <div class="mf-group">
+        <label>Password</label>
+        <input type="password" id="login-pass" placeholder="Enter your password"/>
+      </div>
+      <p class="error-msg" id="login-error"></p>
+      <button class="btn-modal-submit" onclick="handleLogin()">Login to My Account</button>
+      <div class="modal-divider">or</div>
+      <div class="modal-switch">Don't have an account? <a onclick="switchAuthTab('signup')">Sign up free</a></div>
+    </div>
+
+    <!-- SIGN UP -->
+    <div class="modal-form" id="form-signup">
+      <div class="mf-row">
+        <div class="mf-group"><label>First Name</label><input type="text"  id="signup-fname" placeholder="Ramesh"/></div>
+        <div class="mf-group"><label>Last Name</label> <input type="text"  id="signup-lname" placeholder="Kumar"/></div>
+      </div>
+      <div class="mf-group"><label>Phone Number</label>  <input type="tel"      id="signup-phone" placeholder="+91 98765 43210"/></div>
+      <div class="mf-group"><label>Email Address</label> <input type="email"    id="signup-email" placeholder="your@email.com"/></div>
+      <div class="mf-group"><label>Password</label>      <input type="password" id="signup-pass"  placeholder="At least 6 characters"/></div>
+      <p class="error-msg" id="signup-error"></p>
+      <button class="btn-modal-submit" onclick="handleSignup()">Create My Account</button>
+      <div class="modal-divider">or</div>
+      <div class="modal-switch">Already have an account? <a onclick="switchAuthTab('login')">Login</a></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     ORDER CONFIRMATION MODAL
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal confirm-modal">
+    <button class="modal-close" onclick="closeModal('confirm-modal');resetCart()">✕</button>
+    <div class="confirm-icon">✅</div>
+    <h2>Order Placed!</h2>
+    <p>Your order is being prepared.</p>
+    <p>Estimated delivery: <strong style="color:var(--saffron);">35–50 minutes</strong></p>
+    <div class="order-id" id="order-id-display">Order #SMM-0000</div>
+    <p style="font-size:.9rem;color:var(--saffron);" id="order-paid-display"></p>
+    <p style="font-size:.85rem;">You'll receive an SMS confirmation shortly.</p>
+    <button class="btn-primary" onclick="closeModal('confirm-modal');resetCart()" style="margin-top:1.25rem;">Back to Menu</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     WALLET TOP-UP MODAL
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="wallet-modal">
+  <div class="modal wallet-modal">
+    <button class="modal-close" onclick="closeModal('wallet-modal')">✕</button>
+    <h2>💰 Add Money to Wallet</h2>
+    <p class="modal-sub">Current balance: <strong id="wallet-modal-balance">₹0</strong></p>
+    <div class="mf-group">
+      <label>Amount to Add (₹)</label>
+      <input type="number" id="wallet-add-amount" min="1" placeholder="e.g. 200"/>
+    </div>
+    <div class="wallet-quick-amounts">
+      <button onclick="setWalletAmount(100)">₹100</button>
+      <button onclick="setWalletAmount(200)">₹200</button>
+      <button onclick="setWalletAmount(500)">₹500</button>
+      <button onclick="setWalletAmount(1000)">₹1000</button>
+    </div>
+    <p class="error-msg" id="wallet-error"></p>
+    <button class="btn-modal-submit" onclick="handleAddMoney()">Add Money</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     MY ORDERS MODAL
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="orders-modal">
+  <div class="modal history-modal">
+    <button class="modal-close" onclick="closeModal('orders-modal')">✕</button>
+    <h2>🛒 My Orders</h2>
+    <div id="orders-list" class="history-list"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     MY BOOKINGS MODAL
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="bookings-modal">
+  <div class="modal history-modal">
+    <button class="modal-close" onclick="closeModal('bookings-modal')">✕</button>
+    <h2>📋 My Bookings</h2>
+    <div id="bookings-list" class="history-list"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     JAVASCRIPT (separate file)
+═══════════════════════════════════ -->
+<script src="app.js"></script>
+
+</body>
+</html>
