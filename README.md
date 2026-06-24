@@ -39,10 +39,15 @@ Google Maps Embed API
 
 # 💳 How the Wallet Works
 
-New accounts start with a free ₹500 wallet balance.
+💳 How the Wallet Works
+
+
+New accounts start with a wallet balance of ₹0.
+
+To order food or book a table, you must first add money via Google Pay, PhonePe, Paytm, Card, or UPI (simulated — no real payment gateway connected).
 
 Ordering food deducts the cart total from the wallet.
 
 Booking a table deducts a flat ₹50 reservation fee.
 
-If the balance is too low, you'll be prompted to add money before the action completes.
+If the balance is too low, you'll be automatically prompted to add money before the action completes.
