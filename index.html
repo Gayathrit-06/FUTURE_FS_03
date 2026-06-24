@@ -326,8 +326,8 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-visual">
-      <div class="big-icon"><img src="restaurantimage.jpg" /> </div>
-      <p>Serving Chennai families since 1988</p>
+      <div class="big-icon"><img src = "restaurantimage.jpg"/></div>
+      <p>Serving Chennai families since 1988 — one plate at a time</p>
     </div>
     <div class="about-text">
       <div class="section-tag">Our Story</div>
@@ -578,6 +578,26 @@
       <button onclick="setWalletAmount(200)">₹200</button>
       <button onclick="setWalletAmount(500)">₹500</button>
       <button onclick="setWalletAmount(1000)">₹1000</button>
+    </div>
+    <div class="mf-group">
+      <label>Pay Using</label>
+      <div class="payment-methods" id="payment-methods">
+        <button type="button" class="pm-option active" data-method="gpay" onclick="selectPaymentMethod('gpay', this)">
+          <span class="pm-icon">📱</span> Google Pay
+        </button>
+        <button type="button" class="pm-option" data-method="phonepe" onclick="selectPaymentMethod('phonepe', this)">
+          <span class="pm-icon">📲</span> PhonePe
+        </button>
+        <button type="button" class="pm-option" data-method="paytm" onclick="selectPaymentMethod('paytm', this)">
+          <span class="pm-icon">💸</span> Paytm
+        </button>
+        <button type="button" class="pm-option" data-method="card" onclick="selectPaymentMethod('card', this)">
+          <span class="pm-icon">💳</span> Debit/Credit Card
+        </button>
+        <button type="button" class="pm-option" data-method="upi" onclick="selectPaymentMethod('upi', this)">
+          <span class="pm-icon">🏦</span> UPI ID
+        </button>
+      </div>
     </div>
     <p class="error-msg" id="wallet-error"></p>
     <button class="btn-modal-submit" onclick="handleAddMoney()">Add Money</button>

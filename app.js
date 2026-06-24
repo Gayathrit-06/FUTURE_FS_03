@@ -89,8 +89,9 @@ let currentUser = null;          // null or full user record from storage
 let pendingCheckout = false;     // trigger checkout after login
 let pendingBooking  = false;     // trigger booking after login
 let pendingWalletAction = null;  // 'checkout' | 'booking' — retried after adding money
+let selectedPaymentMethod = 'gpay';
 
-const STARTING_WALLET_BALANCE = 500;  // ₹ given free to new sign-ups
+const STARTING_WALLET_BALANCE = 0;    // new sign-ups start with an empty wallet
 const TABLE_BOOKING_FEE       = 50;   // ₹ reservation fee deducted from wallet
 
 /* ────────────────────────────────────────────────
@@ -466,6 +467,17 @@ function setWalletAmount(amount) {
   document.getElementById('wallet-add-amount').value = amount;
 }
 
+function selectPaymentMethod(method, btnEl) {
+  selectedPaymentMethod = method;
+  document.querySelectorAll('.pm-option').forEach(b => b.classList.remove('active'));
+  btnEl.classList.add('active');
+}
+
+const PAYMENT_METHOD_LABELS = {
+  gpay: 'Google Pay', phonepe: 'PhonePe', paytm: 'Paytm',
+  card: 'Card', upi: 'UPI',
+};
+
 function handleAddMoney() {
   const amountInput = document.getElementById('wallet-add-amount');
   const amount = parseInt(amountInput.value, 10);
@@ -476,12 +488,15 @@ function handleAddMoney() {
     errEl.style.display = 'block';
     return;
   }
+  errEl.style.display = 'none';
 
+  // Simulate a payment confirmation via the chosen method (no real gateway connected)
   currentUser.wallet += amount;
   saveCurrentUser();
   updateWalletUI();
   amountInput.value = '';
   closeModal('wallet-modal');
+  alert(`✅ ₹${amount} added via ${PAYMENT_METHOD_LABELS[selectedPaymentMethod]}.\nNew wallet balance: ₹${currentUser.wallet}`);
 
   // Retry whatever action triggered the top-up
   if (pendingWalletAction === 'checkout') {

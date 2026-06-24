@@ -831,3 +831,24 @@ footer li a:hover, footer li span:hover { color: var(--saffron); }
   padding: .15rem .5rem; border-radius: var(--r-pill);
   background: var(--leaf-dim); color: var(--leaf); border: 1px solid var(--leaf-border);
 }
+
+/* ────────────────────────────────────────────────
+   PAYMENT METHOD SELECTOR (Wallet top-up)
+──────────────────────────────────────────────── */
+.payment-methods {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .5rem;
+  margin-top: .5rem;
+}
+.pm-option {
+  display: flex; align-items: center; gap: .5rem;
+  background: var(--bg-overlay); border: 1px solid var(--border-mid);
+  color: var(--text-secondary); border-radius: var(--r-sm);
+  padding: .6rem .75rem; font-size: .8rem; font-weight: 600;
+  cursor: pointer; transition: all var(--t-fast); text-align: left;
+}
+.pm-option .pm-icon { font-size: 1rem; }
+.pm-option:hover { border-color: var(--saffron); color: var(--text-primary); }
+.pm-option.active {
+  border-color: var(--saffron); background: var(--saffron-dim);
+  color: var(--saffron);
+}
